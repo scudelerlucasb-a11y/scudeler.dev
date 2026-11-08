@@ -332,6 +332,27 @@
   .mini-list button:hover{ color:#B4342E; }
   .mini-empty{ color: var(--muted); font-size: 0.85rem; font-style:italic; }
 
+  /* AuthSystem demo */
+  .auth-tabs{ display:flex; gap:6px; margin-bottom:16px; }
+  .auth-tab{
+    flex:1; background: var(--bg); color: var(--ink); border:1px solid var(--border); border-radius:7px;
+    padding: 8px 10px; font-size:0.82rem; font-weight:600; cursor:pointer; font-family: var(--font-body);
+  }
+  .auth-tab:hover{ border-color: var(--accent); }
+  .auth-tab.active{ background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .auth-form{ display:flex; flex-direction:column; gap:8px; }
+  .auth-form label{ font-size:0.78rem; color: var(--muted); font-weight:600; }
+  .auth-check{ display:flex; align-items:center; gap:8px; font-size:0.85rem; color: var(--ink); }
+  .auth-actions{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:4px; }
+  .auth-ghost{ background: var(--bg); color: var(--ink); border:1px solid var(--border); }
+  .auth-account{ border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:14px; }
+  .auth-account strong{ display:block; font-family: var(--font-display); font-size:1rem; }
+  .auth-account span{ font-family: var(--font-mono); font-size:0.8rem; color: var(--muted); }
+  .auth-msg{ margin-top:14px; border-radius:8px; padding:10px 12px; font-size:0.85rem; border:1px solid var(--border); background: var(--bg); min-height:0; }
+  .auth-msg:empty{ display:none; }
+  .auth-msg.ok{ border-color: var(--accent); background: var(--accent-soft); }
+  .auth-msg.err{ border-color:#B4342E; background: rgba(180,52,46,0.12); }
+
   .rps-choices{ display:flex; gap: 10px; margin-bottom: 18px; }
   .rps-choice{
     flex:1; padding: 14px 8px; border: 1px solid var(--border); border-radius: 9px;
@@ -421,7 +442,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a href="#topo" class="brand"><span class="dot" aria-hidden="true"></span>lucas.dev</a>
+    <a href="#topo" class="brand"><span class="dot" aria-hidden="true"></span>scudeler.dev</a>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     <nav class="links" id="navLinks" aria-label="Navegação principal">
       <a href="#sobre">Sobre</a>
@@ -531,6 +552,16 @@
           </div>
         </div>
         <div class="tech-card">
+          <h3>Dados</h3>
+          <div class="tag-list">
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Excel (fundamentos)</span>
+            <span class="tag">Power BI (fundamentos)</span>
+          </div>
+        </div>
+        <div class="tech-card">
           <h3>Banco de dados</h3>
           <div class="tag-list">
             <span class="tag">SQLite</span>
@@ -609,6 +640,24 @@
         </div>
 
         <div class="project-card">
+          <span class="project-kicker">AuthSystem.py</span>
+          <h3>AuthSystem — Cadastro e Login</h3>
+          <p>Sistema de cadastro e login em Python com SQLite, executado no terminal: validação de nome, e-mail e senha, geração de senha segura, troca e redefinição de senha.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">CRUD</span>
+          </div>
+          <div class="project-actions">
+            <button class="demo-btn" data-demo="auth">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              Testar
+            </button>
+            <a class="project-link" href="https://github.com/scudelerlucasb-a11y/AuthSystem" target="_blank" rel="noopener noreferrer">Código no GitHub →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
           <span class="project-kicker">lista_de_tarefas.py</span>
           <h3>Lista de Tarefas</h3>
           <p>Aplicação de linha de comando para adicionar, concluir e remover tarefas — meu primeiro projeto organizando dados em memória e tratando as escolhas do usuário.</p>
@@ -621,7 +670,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               Ver em ação
             </button>
-            <a class="project-link" href="	https://github.com/scudelerlucasb-a11y/Lista-de-tarefas" target="_blank" rel="noopener noreferrer">Código no GitHub →</a>
+            <a class="project-link" href="https://github.com/scudelerlucasb-a11y/Lista-de-tarefas" target="_blank" rel="noopener noreferrer">Código no GitHub →</a>
           </div>
         </div>
 
@@ -678,7 +727,7 @@
           <span class="timeline-date">2026 — atual</span>
           <div>
             <div class="timeline-title">Ciência da Computação</div>
-            <div class="timeline-desc">Faculdade Impacta · 2º semestre, em andamento</div>
+            <div class="timeline-desc">Faculdade Impacta · 2º semestre · conclusão prevista em Jan 2030</div>
           </div>
         </div>
       </div>
@@ -712,6 +761,26 @@
         <div class="cert-card">
           <span class="cert-name">Fundamentos de Inteligência Artificial e Análise de Dados — SENAI</span>
           <span class="cert-hours">40h</span>
+        </div>
+        <div class="cert-card">
+          <span class="cert-name">Excel — Santander Open Academy</span>
+          <span class="cert-hours">8h</span>
+        </div>
+        <div class="cert-card">
+          <span class="cert-name">Power BI (fundamentos) — Santander Open Academy</span>
+          <span class="cert-hours">8h</span>
+        </div>
+        <div class="cert-card">
+          <span class="cert-name">SQLite Fundamentals — Coddy</span>
+          <span class="cert-hours">2026</span>
+        </div>
+        <div class="cert-card">
+          <span class="cert-name">Santander Coders — Python</span>
+          <span class="cert-hours">2026</span>
+        </div>
+        <div class="cert-card">
+          <span class="cert-name">Cursos de inglês (3) — Santander Open Academy</span>
+          <span class="cert-hours">8h cada</span>
         </div>
       </div>
     </div>
@@ -784,6 +853,7 @@
     if(kind === 'todo'){ demoTitle.textContent = 'Lista de Tarefas — em ação'; renderTodo(); }
     if(kind === 'rps'){ demoTitle.textContent = 'Pedra, Papel e Tesoura — em ação'; renderRps(); }
     if(kind === 'stock'){ demoTitle.textContent = 'Controle de Estoque — em ação'; renderStock(); }
+    if(kind === 'auth'){ demoTitle.textContent = 'AuthSystem — cadastro e login'; renderAuth(); }
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     demoClose.focus();
@@ -954,6 +1024,144 @@
     body.querySelectorAll('.stockDel').forEach(btn => {
       btn.addEventListener('click', () => { stockItems.splice(+btn.dataset.i, 1); paintStock(); });
     });
+  }
+
+  /* ---- AuthSystem ---- */
+  let authUsers = [];
+  let authSession = null;
+  let authTab = 'login';
+
+  const authEsc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  function renderAuth(){
+    authUsers = [{ nome: 'Joao Silva', email: 'joao@teste.com', senha: 'minhasenha123' }];
+    authSession = null;
+    authTab = 'login';
+    paintAuth();
+  }
+
+  function authShow(text, type){
+    const box = document.getElementById('authMsg');
+    if(!box) return;
+    box.className = 'auth-msg ' + (type || '');
+    box.textContent = text || '';
+  }
+
+  function authGerarSenha(){
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*.';
+    const bytes = new Uint32Array(12);
+    crypto.getRandomValues(bytes);
+    return Array.from(bytes, b => chars[b % chars.length]).join('');
+  }
+
+  function paintAuth(msg){
+    const note = '<p class="demo-note">Simulação em JavaScript do AuthSystem (Python + SQLite) para rodar no navegador. Os dados ficam só nesta página e somem ao fechar. Conta de teste: joao@teste.com / minhasenha123</p>';
+    let html = note;
+
+    if(authSession){
+      html += `
+        <div class="auth-account">
+          <strong>Bem-vindo, ${authEsc(authSession.nome)}!</strong>
+          <span>${authEsc(authSession.email)}</span>
+        </div>
+        <div class="auth-form">
+          <label for="authNova">Nova senha (mínimo 8 caracteres)</label>
+          <input type="password" class="mini-input" id="authNova" autocomplete="off">
+          <div class="auth-actions">
+            <button class="mini-btn" id="authTrocar">Trocar senha</button>
+            <button class="mini-btn auth-ghost" id="authSair">Sair da conta</button>
+          </div>
+        </div>`;
+    } else {
+      const tabs = [['login','Logar'],['cadastro','Cadastrar'],['esqueci','Esqueci a senha']];
+      html += '<div class="auth-tabs" role="tablist">' + tabs.map(t =>
+        `<button class="auth-tab${authTab === t[0] ? ' active' : ''}" role="tab" aria-selected="${authTab === t[0]}" data-tab="${t[0]}">${t[1]}</button>`
+      ).join('') + '</div>';
+
+      if(authTab === 'login'){
+        html += `
+          <div class="auth-form">
+            <label for="authEmail">E-mail</label>
+            <input type="email" class="mini-input" id="authEmail" autocomplete="off">
+            <label for="authSenha">Senha</label>
+            <input type="password" class="mini-input" id="authSenha" autocomplete="off">
+            <div class="auth-actions"><button class="mini-btn" id="authEntrar">Entrar</button></div>
+          </div>`;
+      } else if(authTab === 'cadastro'){
+        html += `
+          <div class="auth-form">
+            <label for="authNome">Nome completo</label>
+            <input type="text" class="mini-input" id="authNome" maxlength="60" autocomplete="off">
+            <label for="authEmail">E-mail</label>
+            <input type="email" class="mini-input" id="authEmail" autocomplete="off">
+            <label class="auth-check"><input type="checkbox" id="authAuto"> Gerar uma senha segura automaticamente</label>
+            <label for="authSenha">Senha (mínimo 8 caracteres)</label>
+            <input type="password" class="mini-input" id="authSenha" autocomplete="off">
+            <div class="auth-actions"><button class="mini-btn" id="authCadastrar">Criar conta</button></div>
+          </div>`;
+      } else {
+        html += `
+          <div class="auth-form">
+            <label for="authEmail">E-mail cadastrado</label>
+            <input type="email" class="mini-input" id="authEmail" autocomplete="off">
+            <label for="authSenha">Nova senha (mínimo 8 caracteres)</label>
+            <input type="password" class="mini-input" id="authSenha" autocomplete="off">
+            <div class="auth-actions"><button class="mini-btn" id="authRedefinir">Atualizar senha</button></div>
+          </div>`;
+      }
+    }
+
+    html += '<div class="auth-msg" id="authMsg" role="status"></div>';
+    demoBody.innerHTML = html;
+    if(msg) authShow(msg.text, msg.type);
+
+    demoBody.querySelectorAll('.auth-tab').forEach(btn => {
+      btn.addEventListener('click', () => { authTab = btn.dataset.tab; paintAuth(); });
+    });
+
+    const on = (id, fn) => { const el = document.getElementById(id); if(el) el.addEventListener('click', fn); };
+
+    on('authEntrar', () => {
+      const email = document.getElementById('authEmail').value;
+      const senha = document.getElementById('authSenha').value;
+      const user = authUsers.find(u => u.email === email && u.senha === senha);
+      if(user){ authSession = user; paintAuth({ text: 'Login realizado com sucesso!', type: 'ok' }); }
+      else authShow('E-mail ou senha incorretos!', 'err');
+    });
+
+    on('authCadastrar', () => {
+      const nome = document.getElementById('authNome').value.trim();
+      const email = document.getElementById('authEmail').value.trim();
+      const auto = document.getElementById('authAuto').checked;
+      let senha = document.getElementById('authSenha').value;
+      if(nome.split(/\s+/).filter(Boolean).length < 2){ authShow('Digite seu nome e sobrenome.', 'err'); return; }
+      if(!email.includes('@') || !email.includes('.') || email.includes(' ')){ authShow('E-mail inválido!', 'err'); return; }
+      if(auto) senha = authGerarSenha();
+      if(senha.length < 8){ authShow('A senha deve ter no mínimo 8 caracteres.', 'err'); return; }
+      if(authUsers.some(u => u.email === email)){ authShow('Este e-mail já está cadastrado!', 'err'); return; }
+      authUsers.push({ nome, email, senha });
+      authShow(auto ? 'Conta criada com sucesso! Sua senha gerada foi: ' + senha : 'Conta criada com sucesso!', 'ok');
+    });
+
+    on('authRedefinir', () => {
+      const email = document.getElementById('authEmail').value;
+      const nova = document.getElementById('authSenha').value;
+      const user = authUsers.find(u => u.email === email);
+      if(!user){ authShow('E-mail não encontrado. Verifique se possui cadastro.', 'err'); return; }
+      if(nova.length < 8){ authShow('A senha deve ter no mínimo 8 caracteres.', 'err'); return; }
+      user.senha = nova;
+      authShow('Senha atualizada com sucesso!', 'ok');
+    });
+
+    on('authTrocar', () => {
+      const nova = document.getElementById('authNova').value;
+      if(nova.length < 8){ authShow('A senha deve ter no mínimo 8 caracteres.', 'err'); return; }
+      authSession.senha = nova;
+      document.getElementById('authNova').value = '';
+      authShow('Senha alterada com sucesso!', 'ok');
+    });
+
+    on('authSair', () => { authSession = null; authTab = 'login'; paintAuth({ text: 'Você saiu da sua conta.', type: '' }); });
   }
 
 </script>
