@@ -333,25 +333,78 @@
   .mini-empty{ color: var(--muted); font-size: 0.85rem; font-style:italic; }
 
   /* AuthSystem demo */
-  .auth-tabs{ display:flex; gap:6px; margin-bottom:16px; }
-  .auth-tab{
-    flex:1; background: var(--bg); color: var(--ink); border:1px solid var(--border); border-radius:7px;
-    padding: 8px 10px; font-size:0.82rem; font-weight:600; cursor:pointer; font-family: var(--font-body);
+  .auth-wrap{ display:flex; flex-direction:column; gap:16px; }
+  .auth-hero{ text-align:center; }
+  .auth-logo{
+    width:46px; height:46px; margin:0 auto 10px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    background: var(--accent-soft); color: var(--accent); border:1px solid rgba(62,207,142,0.35);
   }
-  .auth-tab:hover{ border-color: var(--accent); }
-  .auth-tab.active{ background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
-  .auth-form{ display:flex; flex-direction:column; gap:8px; }
-  .auth-form label{ font-size:0.78rem; color: var(--muted); font-weight:600; }
-  .auth-check{ display:flex; align-items:center; gap:8px; font-size:0.85rem; color: var(--ink); }
-  .auth-actions{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:4px; }
-  .auth-ghost{ background: var(--bg); color: var(--ink); border:1px solid var(--border); }
-  .auth-account{ border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:14px; }
-  .auth-account strong{ display:block; font-family: var(--font-display); font-size:1rem; }
-  .auth-account span{ font-family: var(--font-mono); font-size:0.8rem; color: var(--muted); }
-  .auth-msg{ margin-top:14px; border-radius:8px; padding:10px 12px; font-size:0.85rem; border:1px solid var(--border); background: var(--bg); min-height:0; }
+  .auth-logo svg{ width:22px; height:22px; }
+  .auth-title{ font-family: var(--font-display); font-size:1.25rem; font-weight:700; }
+  .auth-sub{ color: var(--muted); font-size:0.85rem; margin-top:2px; }
+  .auth-tabs{ display:flex; gap:4px; padding:4px; background: var(--bg); border:1px solid var(--border); border-radius:10px; }
+  .auth-tab{
+    flex:1; background:transparent; color: var(--muted); border:0; border-radius:7px; padding:8px 6px;
+    font-size:0.8rem; font-weight:600; cursor:pointer; font-family: var(--font-body);
+  }
+  .auth-tab:hover{ color: var(--ink); }
+  .auth-tab.active{ background: var(--accent); color: var(--on-accent); }
+  .auth-tab:focus-visible, .auth-primary:focus-visible, .auth-ghost:focus-visible, .auth-link:focus-visible, .auth-eye:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .auth-form{ display:flex; flex-direction:column; gap:14px; }
+  .auth-field{ display:flex; flex-direction:column; gap:6px; }
+  .auth-field label{ font-size:0.78rem; color: var(--muted); font-weight:600; }
+  .auth-input-wrap{ position:relative; }
+  .auth-input-wrap .mini-input{ width:100%; }
+  .auth-input-wrap.has-eye .mini-input{ padding-right:78px; }
+  .auth-eye{
+    position:absolute; right:8px; top:50%; transform:translateY(-50%); background:transparent; border:0;
+    color: var(--muted); font-size:0.75rem; font-weight:600; cursor:pointer; padding:4px 6px; border-radius:6px; font-family: var(--font-body);
+  }
+  .auth-eye:hover{ color: var(--accent-ink); }
+  .auth-check{ display:flex; align-items:center; gap:8px; font-size:0.85rem; color: var(--ink); cursor:pointer; }
+  .auth-check input{ accent-color: var(--accent); width:16px; height:16px; }
+  .auth-primary{
+    width:100%; background: var(--accent); color: var(--on-accent); border:0; border-radius:8px; padding:11px 14px;
+    font-weight:700; font-size:0.9rem; cursor:pointer; font-family: var(--font-body);
+  }
+  .auth-primary:hover{ filter: brightness(1.08); }
+  .auth-ghost{
+    width:100%; background:transparent; color: var(--ink); border:1px solid var(--border); border-radius:8px; padding:10px 14px;
+    font-weight:600; font-size:0.88rem; cursor:pointer; font-family: var(--font-body);
+  }
+  .auth-ghost:hover{ border-color: var(--accent); }
+  .auth-strength{ display:flex; flex-direction:column; gap:5px; }
+  .auth-bars{ display:flex; gap:4px; }
+  .auth-bars span{ flex:1; height:4px; border-radius:2px; background: var(--border); transition: background .2s; }
+  .auth-bars.s1 span:nth-child(-n+1){ background:#E5534B; }
+  .auth-bars.s2 span:nth-child(-n+2){ background: var(--gold); }
+  .auth-bars.s3 span:nth-child(-n+3){ background:#8FD694; }
+  .auth-bars.s4 span{ background: var(--accent); }
+  .auth-strength small{ font-size:0.74rem; color: var(--muted); min-height:1em; }
+  .auth-hint{
+    display:flex; align-items:center; justify-content:space-between; gap:10px; background: var(--bg);
+    border:1px dashed var(--border); border-radius:8px; padding:9px 12px; font-size:0.78rem; color: var(--muted);
+  }
+  .auth-hint code{ font-family: var(--font-mono); color: var(--ink); }
+  .auth-link{ background:transparent; border:0; color: var(--accent-ink); font-weight:600; font-size:0.78rem; cursor:pointer; font-family: var(--font-body); text-decoration: underline; }
+  .auth-account{ display:flex; align-items:center; gap:14px; border:1px solid var(--border); border-radius:12px; padding:16px; background: var(--bg); }
+  .auth-avatar{
+    width:48px; height:48px; border-radius:50%; background: var(--accent); color: var(--on-accent); display:flex;
+    align-items:center; justify-content:center; font-family: var(--font-display); font-weight:700; font-size:1.05rem; flex-shrink:0;
+  }
+  .auth-account strong{ display:block; font-family: var(--font-display); font-size:1.02rem; }
+  .auth-account .auth-mail{ font-family: var(--font-mono); font-size:0.78rem; color: var(--muted); word-break: break-all; }
+  .auth-badge{ margin-left:auto; font-size:0.7rem; font-weight:700; color: var(--accent-ink); background: var(--accent-soft); border-radius:999px; padding:3px 9px; white-space:nowrap; }
+  .auth-msg{ display:flex; gap:10px; align-items:flex-start; border-radius:8px; padding:10px 12px; font-size:0.85rem; border:1px solid var(--border); background: var(--bg); }
   .auth-msg:empty{ display:none; }
-  .auth-msg.ok{ border-color: var(--accent); background: var(--accent-soft); }
+  .auth-msg .ico{ font-weight:800; flex-shrink:0; }
+  .auth-msg.ok{ border-color: rgba(62,207,142,0.5); background: var(--accent-soft); }
+  .auth-msg.ok .ico{ color: var(--accent); }
   .auth-msg.err{ border-color:#B4342E; background: rgba(180,52,46,0.12); }
+  .auth-msg.err .ico{ color:#E5534B; }
+  .auth-pass{ display:flex; align-items:center; gap:8px; margin-top:6px; flex-wrap:wrap; }
+  .auth-pass code{ font-family: var(--font-mono); background: var(--code-bg); border:1px solid var(--border); border-radius:6px; padding:4px 8px; font-size:0.85rem; }
+  .auth-foot{ text-align:center; font-size:0.72rem; color: var(--muted); }
 
   .rps-choices{ display:flex; gap: 10px; margin-bottom: 18px; }
   .rps-choice{
@@ -442,7 +495,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a href="#topo" class="brand"><span class="dot" aria-hidden="true"></span>scudeler.dev</a>
+    <a href="#topo" class="brand"><span class="dot" aria-hidden="true"></span>lucas.dev</a>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     <nav class="links" id="navLinks" aria-label="Navegação principal">
       <a href="#sobre">Sobre</a>
@@ -1032,6 +1085,7 @@
   let authTab = 'login';
 
   const authEsc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const AUTH_LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
 
   function renderAuth(){
     authUsers = [{ nome: 'Joao Silva', email: 'joao@teste.com', senha: 'minhasenha123' }];
@@ -1040,11 +1094,37 @@
     paintAuth();
   }
 
-  function authShow(text, type){
+  function authShow(text, type, pass){
     const box = document.getElementById('authMsg');
     if(!box) return;
     box.className = 'auth-msg ' + (type || '');
-    box.textContent = text || '';
+    box.innerHTML = '';
+    if(!text) return;
+    const ico = document.createElement('span');
+    ico.className = 'ico';
+    ico.textContent = type === 'ok' ? '✓' : (type === 'err' ? '!' : 'i');
+    const body = document.createElement('div');
+    const t = document.createElement('div');
+    t.textContent = text;
+    body.appendChild(t);
+    if(pass){
+      const row = document.createElement('div');
+      row.className = 'auth-pass';
+      const code = document.createElement('code');
+      code.textContent = pass;
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'auth-link';
+      copy.textContent = 'Copiar';
+      copy.addEventListener('click', () => {
+        if(navigator.clipboard){ navigator.clipboard.writeText(pass).then(() => { copy.textContent = 'Copiado!'; }, () => {}); }
+      });
+      row.appendChild(code);
+      row.appendChild(copy);
+      body.appendChild(row);
+    }
+    box.appendChild(ico);
+    box.appendChild(body);
   }
 
   function authGerarSenha(){
@@ -1054,98 +1134,191 @@
     return Array.from(bytes, b => chars[b % chars.length]).join('');
   }
 
+  function authInitials(nome){
+    const p = nome.trim().split(/\s+/).filter(Boolean);
+    if(!p.length) return '?';
+    return (p[0][0] + (p.length > 1 ? p[p.length - 1][0] : '')).toUpperCase();
+  }
+
+  function authStrength(pw){
+    if(!pw) return { n: 0, label: '' };
+    if(pw.length < 8) return { n: 1, label: 'Muito curta (mínimo de 8 caracteres)' };
+    let n = 1;
+    if(/[a-z]/.test(pw) && /[A-Z]/.test(pw)) n++;
+    if(/\d/.test(pw)) n++;
+    if(/[^A-Za-z0-9]/.test(pw) || pw.length >= 12) n++;
+    return { n, label: ['', 'Fraca', 'Razoável', 'Boa', 'Forte'][n] };
+  }
+
+  function authPwField(id, label){
+    return `
+      <div class="auth-field">
+        <label for="${id}">${label}</label>
+        <div class="auth-input-wrap has-eye">
+          <input type="password" class="mini-input" id="${id}" autocomplete="off">
+          <button type="button" class="auth-eye" data-target="${id}" aria-label="Mostrar ou ocultar senha">Mostrar</button>
+        </div>
+      </div>`;
+  }
+
+  const AUTH_METER = '<div class="auth-strength"><div class="auth-bars" id="authBars"><span></span><span></span><span></span><span></span></div><small id="authStrengthLabel"></small></div>';
+
   function paintAuth(msg){
-    const note = '<p class="demo-note">Simulação em JavaScript do AuthSystem (Python + SQLite) para rodar no navegador. Os dados ficam só nesta página e somem ao fechar. Conta de teste: joao@teste.com / minhasenha123</p>';
-    let html = note;
+    let html = '<div class="auth-wrap">';
 
     if(authSession){
       html += `
         <div class="auth-account">
-          <strong>Bem-vindo, ${authEsc(authSession.nome)}!</strong>
-          <span>${authEsc(authSession.email)}</span>
+          <div class="auth-avatar">${authEsc(authInitials(authSession.nome))}</div>
+          <div>
+            <strong>${authEsc(authSession.nome)}</strong>
+            <span class="auth-mail">${authEsc(authSession.email)}</span>
+          </div>
+          <span class="auth-badge">Sessão ativa</span>
         </div>
         <div class="auth-form">
-          <label for="authNova">Nova senha (mínimo 8 caracteres)</label>
-          <input type="password" class="mini-input" id="authNova" autocomplete="off">
-          <div class="auth-actions">
-            <button class="mini-btn" id="authTrocar">Trocar senha</button>
-            <button class="mini-btn auth-ghost" id="authSair">Sair da conta</button>
-          </div>
+          ${authPwField('authNova', 'Nova senha (mínimo 8 caracteres)')}
+          ${AUTH_METER}
+          <button class="auth-primary" id="authTrocar">Trocar senha</button>
+          <button class="auth-ghost" id="authSair">Sair da conta</button>
         </div>`;
     } else {
+      const titles = {
+        login: ['Bem-vindo de volta', 'Entre com seu e-mail e senha.'],
+        cadastro: ['Crie sua conta', 'Preencha seus dados para se cadastrar.'],
+        esqueci: ['Recuperar senha', 'Informe seu e-mail e escolha uma nova senha.']
+      };
       const tabs = [['login','Logar'],['cadastro','Cadastrar'],['esqueci','Esqueci a senha']];
-      html += '<div class="auth-tabs" role="tablist">' + tabs.map(t =>
+      html += `
+        <div class="auth-hero">
+          <div class="auth-logo">${AUTH_LOCK}</div>
+          <div class="auth-title">${titles[authTab][0]}</div>
+          <div class="auth-sub">${titles[authTab][1]}</div>
+        </div>
+        <div class="auth-tabs" role="tablist">` + tabs.map(t =>
         `<button class="auth-tab${authTab === t[0] ? ' active' : ''}" role="tab" aria-selected="${authTab === t[0]}" data-tab="${t[0]}">${t[1]}</button>`
       ).join('') + '</div>';
 
       if(authTab === 'login'){
         html += `
+          <div class="auth-hint"><span>Conta de teste: <code>joao@teste.com</code></span><button type="button" class="auth-link" id="authUsarTeste">Preencher</button></div>
           <div class="auth-form">
-            <label for="authEmail">E-mail</label>
-            <input type="email" class="mini-input" id="authEmail" autocomplete="off">
-            <label for="authSenha">Senha</label>
-            <input type="password" class="mini-input" id="authSenha" autocomplete="off">
-            <div class="auth-actions"><button class="mini-btn" id="authEntrar">Entrar</button></div>
+            <div class="auth-field">
+              <label for="authEmail">E-mail</label>
+              <div class="auth-input-wrap"><input type="email" class="mini-input" id="authEmail" autocomplete="off" placeholder="voce@email.com"></div>
+            </div>
+            ${authPwField('authSenha', 'Senha')}
+            <button class="auth-primary" id="authEntrar">Entrar</button>
           </div>`;
       } else if(authTab === 'cadastro'){
         html += `
           <div class="auth-form">
-            <label for="authNome">Nome completo</label>
-            <input type="text" class="mini-input" id="authNome" maxlength="60" autocomplete="off">
-            <label for="authEmail">E-mail</label>
-            <input type="email" class="mini-input" id="authEmail" autocomplete="off">
+            <div class="auth-field">
+              <label for="authNome">Nome completo</label>
+              <div class="auth-input-wrap"><input type="text" class="mini-input" id="authNome" maxlength="60" autocomplete="off" placeholder="Nome e sobrenome"></div>
+            </div>
+            <div class="auth-field">
+              <label for="authEmail">E-mail</label>
+              <div class="auth-input-wrap"><input type="email" class="mini-input" id="authEmail" autocomplete="off" placeholder="voce@email.com"></div>
+            </div>
             <label class="auth-check"><input type="checkbox" id="authAuto"> Gerar uma senha segura automaticamente</label>
-            <label for="authSenha">Senha (mínimo 8 caracteres)</label>
-            <input type="password" class="mini-input" id="authSenha" autocomplete="off">
-            <div class="auth-actions"><button class="mini-btn" id="authCadastrar">Criar conta</button></div>
+            ${authPwField('authSenha', 'Senha (mínimo 8 caracteres)')}
+            ${AUTH_METER}
+            <button class="auth-primary" id="authCadastrar">Criar conta</button>
           </div>`;
       } else {
         html += `
           <div class="auth-form">
-            <label for="authEmail">E-mail cadastrado</label>
-            <input type="email" class="mini-input" id="authEmail" autocomplete="off">
-            <label for="authSenha">Nova senha (mínimo 8 caracteres)</label>
-            <input type="password" class="mini-input" id="authSenha" autocomplete="off">
-            <div class="auth-actions"><button class="mini-btn" id="authRedefinir">Atualizar senha</button></div>
+            <div class="auth-field">
+              <label for="authEmail">E-mail cadastrado</label>
+              <div class="auth-input-wrap"><input type="email" class="mini-input" id="authEmail" autocomplete="off" placeholder="voce@email.com"></div>
+            </div>
+            ${authPwField('authSenha', 'Nova senha (mínimo 8 caracteres)')}
+            ${AUTH_METER}
+            <button class="auth-primary" id="authRedefinir">Atualizar senha</button>
           </div>`;
       }
     }
 
     html += '<div class="auth-msg" id="authMsg" role="status"></div>';
+    html += '<div class="auth-foot">Simulação em JavaScript do AuthSystem (Python + SQLite). Os dados ficam só nesta página e somem ao fechar.</div>';
+    html += '</div>';
     demoBody.innerHTML = html;
-    if(msg) authShow(msg.text, msg.type);
+    if(msg) authShow(msg.text, msg.type, msg.pass);
+
+    const $ = id => document.getElementById(id);
+    const on = (id, fn) => { const el = $(id); if(el) el.addEventListener('click', fn); };
 
     demoBody.querySelectorAll('.auth-tab').forEach(btn => {
       btn.addEventListener('click', () => { authTab = btn.dataset.tab; paintAuth(); });
     });
 
-    const on = (id, fn) => { const el = document.getElementById(id); if(el) el.addEventListener('click', fn); };
+    demoBody.querySelectorAll('.auth-eye').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = $(btn.dataset.target);
+        const show = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        btn.textContent = show ? 'Ocultar' : 'Mostrar';
+      });
+    });
+
+    const meterInput = $('authSenha') || $('authNova');
+    if(meterInput && $('authBars')){
+      const update = () => {
+        const r = authStrength(meterInput.value);
+        $('authBars').className = 'auth-bars' + (r.n ? ' s' + r.n : '');
+        $('authStrengthLabel').textContent = r.label ? 'Força da senha: ' + r.label : '';
+      };
+      meterInput.addEventListener('input', update);
+    }
+
+    const auto = $('authAuto');
+    if(auto){
+      auto.addEventListener('change', () => {
+        const input = $('authSenha');
+        input.disabled = auto.checked;
+        if(auto.checked){ input.value = ''; input.dispatchEvent(new Event('input')); }
+        input.closest('.auth-field').style.opacity = auto.checked ? '0.5' : '1';
+      });
+    }
+
+    on('authUsarTeste', () => {
+      $('authEmail').value = 'joao@teste.com';
+      $('authSenha').value = 'minhasenha123';
+      authShow('Campos preenchidos. Clique em Entrar.', '');
+    });
 
     on('authEntrar', () => {
-      const email = document.getElementById('authEmail').value;
-      const senha = document.getElementById('authSenha').value;
+      const email = $('authEmail').value;
+      const senha = $('authSenha').value;
       const user = authUsers.find(u => u.email === email && u.senha === senha);
       if(user){ authSession = user; paintAuth({ text: 'Login realizado com sucesso!', type: 'ok' }); }
       else authShow('E-mail ou senha incorretos!', 'err');
     });
 
     on('authCadastrar', () => {
-      const nome = document.getElementById('authNome').value.trim();
-      const email = document.getElementById('authEmail').value.trim();
-      const auto = document.getElementById('authAuto').checked;
-      let senha = document.getElementById('authSenha').value;
+      const nome = $('authNome').value.trim();
+      const email = $('authEmail').value.trim();
+      const gerar = $('authAuto').checked;
+      let senha = $('authSenha').value;
       if(nome.split(/\s+/).filter(Boolean).length < 2){ authShow('Digite seu nome e sobrenome.', 'err'); return; }
       if(!email.includes('@') || !email.includes('.') || email.includes(' ')){ authShow('E-mail inválido!', 'err'); return; }
-      if(auto) senha = authGerarSenha();
+      if(gerar) senha = authGerarSenha();
       if(senha.length < 8){ authShow('A senha deve ter no mínimo 8 caracteres.', 'err'); return; }
       if(authUsers.some(u => u.email === email)){ authShow('Este e-mail já está cadastrado!', 'err'); return; }
       authUsers.push({ nome, email, senha });
-      authShow(auto ? 'Conta criada com sucesso! Sua senha gerada foi: ' + senha : 'Conta criada com sucesso!', 'ok');
+      authTab = 'login';
+      paintAuth({
+        text: gerar ? 'Conta criada com sucesso! Sua senha gerada foi:' : 'Conta criada com sucesso! Agora é só entrar.',
+        type: 'ok',
+        pass: gerar ? senha : null
+      });
+      $('authEmail').value = email;
     });
 
     on('authRedefinir', () => {
-      const email = document.getElementById('authEmail').value;
-      const nova = document.getElementById('authSenha').value;
+      const email = $('authEmail').value;
+      const nova = $('authSenha').value;
       const user = authUsers.find(u => u.email === email);
       if(!user){ authShow('E-mail não encontrado. Verifique se possui cadastro.', 'err'); return; }
       if(nova.length < 8){ authShow('A senha deve ter no mínimo 8 caracteres.', 'err'); return; }
@@ -1154,14 +1327,18 @@
     });
 
     on('authTrocar', () => {
-      const nova = document.getElementById('authNova').value;
+      const nova = $('authNova').value;
       if(nova.length < 8){ authShow('A senha deve ter no mínimo 8 caracteres.', 'err'); return; }
       authSession.senha = nova;
-      document.getElementById('authNova').value = '';
+      $('authNova').value = '';
+      $('authNova').dispatchEvent(new Event('input'));
       authShow('Senha alterada com sucesso!', 'ok');
     });
 
     on('authSair', () => { authSession = null; authTab = 'login'; paintAuth({ text: 'Você saiu da sua conta.', type: '' }); });
+
+    const first = demoBody.querySelector('input:not([disabled])');
+    if(first && !msg) first.focus();
   }
 
 </script>
